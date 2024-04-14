@@ -1,4 +1,4 @@
-import asyncHandler from "../utils/asyncHandler.js"
+// import asyncHandler from "../utils/asyncHandler.js"
 import { apiResonse } from "../utils/apiResponse.js"
 import { apiError } from "../utils/apiError.js"
 import { User } from "../models/user.model.js"
@@ -24,7 +24,7 @@ const generateaccessandrefereshtoken = async (userid) => {
 
 }
 
-const registerUser = asyncHandler(async (req, res) => {
+const registerUser = (async (req, res) => {
 
     const { username, email, password, thoughts } = req.body
     // console.log("email:" , email);
@@ -66,7 +66,7 @@ const registerUser = asyncHandler(async (req, res) => {
     )
 })
 
-const getAlluser = asyncHandler(async (req, res) => {
+const getAlluser = (async (req, res) => {
     try {
         const user = await User.find()
         if (user) {
@@ -88,7 +88,7 @@ const getAlluser = asyncHandler(async (req, res) => {
     }
 })
 
-const mythoughts = asyncHandler(async (req, res) => {
+const mythoughts = (async (req, res) => {
     try {
         const userthought = await User.findById(req.user._id)
 
@@ -101,7 +101,7 @@ const mythoughts = asyncHandler(async (req, res) => {
     }
 })
 
-const loginUser = asyncHandler(async (req, res) => {
+const loginUser = (async (req, res) => {
 
     const { email, username, password } = req.body
 
@@ -150,7 +150,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
 })
 
-const logoutUser = asyncHandler(async (req, res) => {
+const logoutUser = (async (req, res) => {
 
     //to find and update db info
     await User.findByIdAndUpdate(req.user._id,
@@ -176,7 +176,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 
 })
 
-const updatethought = asyncHandler(async (req, res) => {
+const updatethought = (async (req, res) => {
 
     const { thoughts } = req.body
     if (!thoughts) {

@@ -1,10 +1,10 @@
 import { User } from "../models/user.model.js"
 import { apiError } from "../utils/apiError.js"
-import asyncHandler from "../utils/asyncHandler.js"
+// import asyncHandler from "../utils/asyncHandler.js"
 import jwt from "jsonwebtoken"
 
 //to verify generated accesstoken is valid
-export const verifyJwt = asyncHandler(async (req, res, next) => {
+export const verifyJwt = (async (req, res, next) => {
     try {
         const token = req.cookies?.accesstoken || req.header("Authorization")?.replace("Bearer ", "")
 
